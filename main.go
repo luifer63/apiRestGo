@@ -1,3 +1,3 @@
 package main
 
-gunc main(){}
+func main(){}
