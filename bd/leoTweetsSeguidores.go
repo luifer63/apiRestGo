@@ -28,12 +28,12 @@ func LeoTweetsSeguidores(ID string,  page int)([]*models.DevuelvoTweetsSeguidore
 			"from": "tweets",
 			"localField": "usuariorelacionid",
 			"foreignField": "userid",
-			"as": "tweets",
+			"as": "tweet",
 
 		},
 	})
 
-	condiciones = append(condiciones, bson.M{"$unwind": "$tweets"})
+	condiciones = append(condiciones, bson.M{"$unwind": "$tweet"})
 	condiciones = append(condiciones, bson.M{"$sort":bson.M{"fecha": -1}})
 	condiciones = append(condiciones, bson.M{"$skip": skip})
 	condiciones = append(condiciones, bson.M{"$limit": 20})
